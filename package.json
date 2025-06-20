@@ -1,0 +1,29 @@
+{
+  "name": "gulp-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-file-include": "^2.3.0",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-postcss": "^9.0.1",
+    "gulp-sass": "^5.1.0",
+    "gulp-server-livereload": "^1.9.2",
+    "gulp-ttf2woff2": "^4.0.1",
+    "postcss": "^8.5.4",
+    "postcss-clamp": "^4.1.0",
+    "postcss-fluid": "^1.4.2",
+    "postcss-pxtorem": "^6.0.0",
+    "sass": "^1.62.1",
+    "webpack-stream": "^7.0.0"
+  }
+}

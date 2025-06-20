@@ -1,0 +1,89 @@
+/* Убираем внешние отступы и учитываем border-box */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HTML5 display-role reset для старых браузеров */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* Основные настройки документа */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Наследование шрифтов для форм */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* Убираем стандартный стиль списков */
+ol, ul {
+  list-style: none;
+}
+
+/* Убираем подчеркивание у ссылок */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Убираем дефолтные настройки таблиц */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Изображения responsive по умолчанию */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Убираем дефолтный стиль кнопок */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Сброс стилей для fieldset */
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Доступное скрытие элементов */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/* Предотвращаем смену размера textarea по умолчанию */
+textarea {
+  resize: vertical;
+}
+
+/* Убираем автоматическое выделение цветом в Safari */
+::selection {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: inherit;
+}
