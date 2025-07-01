@@ -1,1 +1,2 @@
-console.log('Hello from main.js');
+import './components/mobile_menu'
+import './components/slider'

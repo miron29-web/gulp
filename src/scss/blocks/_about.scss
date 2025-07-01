@@ -1,0 +1,30 @@
+.about{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+
+  margin-bottom: var(--section-spacing);
+
+  background-image: url('./../img/about_bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  color: var(--color-white);
+  text-align: center;
+  font-weight: 500;
+
+  &__title{
+    font-size: 40px;
+    text-transform: uppercase;
+  }
+
+  &__text{
+    width: 600px;
+
+    font-size: 20x;
+    letter-spacing: 2px;
+  }
+}

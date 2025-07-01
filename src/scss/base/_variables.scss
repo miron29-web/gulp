@@ -1,0 +1,19 @@
+:root {
+  --color-white: #fff;
+  --color-black: #222222;
+  --color-accent: #FF551A;
+  --color-accent-transparent: rgb(255, 85, 26, 0.5);
+  --color-blue-dark: #0E202C;
+
+  --color-border-grey: rgba(90, 90, 90, 0.5);
+  --box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.04);
+
+  --container-width: 1200px;
+  --container-padding: 15px;
+  --section-spacing: 80px;
+
+  --font-base: "Inter", sans-serif;
+  --font-base-size: 18px;
+
+  --transition-duration: 0.2s;
+}

@@ -1,1 +1,20 @@
+// base styles
 @use './base/reset';
+@use './base/fonts';
+@use './base/variables';
+@use './base/base';
+
+//components
+@use './components/socials';
+@use './components/logo';
+
+//blocks
+@use './blocks/header';
+@use './blocks/slider';
+@use './blocks/intro';
+@use './blocks/about';
+@use './blocks/benefits';
+@use './blocks/ordering';
+@use './blocks/catalog';
+@use './blocks/contacts';
+@use './blocks/footer';

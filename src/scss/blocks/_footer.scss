@@ -1,0 +1,37 @@
+.footer{
+  min-height: 300px;
+
+  background-color: var(--color-blue-dark);
+  color: var(--color-white);
+
+  &__inner{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  &__column{
+    max-width: 300px;
+    display: grid;
+    display: contents;
+  }
+
+  &__row{
+    height: 100%;
+  }
+
+  &__logo{
+    display: block;
+  }
+
+  &__slogan{
+  }
+
+  &__title{
+    font-size: 24px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+}

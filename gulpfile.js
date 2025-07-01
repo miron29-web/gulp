@@ -9,8 +9,7 @@ const ttf2woff2 = require('gulp-ttf2woff2');
 const pxtorem = require('postcss-pxtorem');
 const groupMedia = require('gulp-group-css-media-queries');
 const webpack = require('webpack-stream');
-const postcssFluid = require('postcss-fluid');
-const postcssClamp = require('postcss-clamp');
+const svgSprite = require('gulp-svg-sprite');
 
 // HTML обработка
 function html() {
@@ -19,20 +18,14 @@ function html() {
     .pipe(dest('./dist'));
 }
 
-// Обработка SCSS + Fluid-типографика
+// SCSS стили без fluid/clamp
 function styles() {
   const plugins = [
     pxtorem({
       rootValue: 16,
       propList: ['*'],
       selectorBlackList: [/^html$/]
-    }),
-    postcssFluid({
-      minWidth: 320,  // Минимальная ширина вьюпорта (px)
-      maxWidth: 1920, // Максимальная ширина вьюпорта (px)
-      unit: 'px'      // Единицы измерения (по умолчанию 'px')
-    }),
-    postcssClamp()    // Добавляет поддержку clamp()
+    })
   ];
 
   return src('./src/scss/*.scss')
@@ -45,16 +38,16 @@ function styles() {
 // JavaScript обработка
 function scripts() {
   return src('./src/js/*.js')
-    .pipe(webpack({ 
-      mode: 'development', 
-      output: { filename: 'main.js' } 
+    .pipe(webpack({
+      mode: 'development',
+      output: { filename: 'main.js' }
     }))
     .pipe(dest('./dist/js'));
 }
 
 // Оптимизация изображений
 function images() {
-  return src('./src/img/**/*')
+  return src('./src/img/**/*', '!./src/img/**/*.svg')
     .pipe(imagemin())
     .pipe(dest('./dist/img'));
 }
@@ -66,19 +59,89 @@ function fonts() {
     .pipe(dest('./dist/fonts'));
 }
 
+// MONO спрайт — удаляем fill, stroke, style
+function spriteMono() {
+  return src('./src/img/icons/mono/*.svg')
+    .pipe(svgSprite({
+      mode: {
+        symbol: {
+          dest: '.',
+          sprite: 'sprite-mono.svg'
+        }
+      },
+      shape: {
+        transform: [
+          {
+            svgo: {
+              plugins: [
+                {
+                  name: 'removeAttrs',
+                  params: {
+                    attrs: ['fill', 'stroke', 'style']
+                  }
+                },
+                {
+                  name: 'removeDimensions',
+                  active: true
+                },
+                {
+                  name: 'removeViewBox',
+                  active: false
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }))
+    .pipe(dest('./dist/img/icons/sprites'));
+}
+
+// MULTI спрайт — сохраняем стили
+function spriteMulti() {
+  return src('./src/img/icons/multi/*.svg')
+    .pipe(svgSprite({
+      mode: {
+        symbol: {
+          dest: '.',
+          sprite: 'sprite-multi.svg'
+        }
+      },
+      shape: {
+        transform: [
+          {
+            svgo: {
+              plugins: [
+                {
+                  name: 'removeDimensions',
+                  active: true
+                },
+                {
+                  name: 'removeViewBox',
+                  active: false
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }))
+    .pipe(dest('./dist/img/icons/sprites'));
+}
+
 // Очистка dist
 function cleanDist() {
   return src('./dist', { read: false, allowEmpty: true })
     .pipe(clean());
 }
 
-// Запуск сервера
+// Локальный сервер
 function serve() {
   return src('./dist')
-    .pipe(server({ 
-      livereload: true, 
-      open: true, 
-      port: 3000 
+    .pipe(server({
+      livereload: true,
+      open: true,
+      port: 3000
     }));
 }
 
@@ -89,16 +152,21 @@ function watchFiles() {
   watch('./src/js/**/*.js', scripts);
   watch('./src/img/**/*', images);
   watch('./src/fonts/*.ttf', fonts);
+  watch('./src/img/icons/mono/*.svg', spriteMono);
+  watch('./src/img/icons/multi/*.svg', spriteMulti);
 }
 
-// Основные задачи
+// Общая задача на оба спрайта
+const sprite = parallel(spriteMono, spriteMulti);
+
+// Основные таски
 exports.default = series(
   cleanDist,
-  parallel(html, styles, scripts, images, fonts),
+  parallel(html, styles, scripts, images, fonts, sprite),
   parallel(watchFiles, serve)
 );
 
 exports.build = series(
   cleanDist,
-  parallel(html, styles, scripts, images, fonts)
+  parallel(html, styles, scripts, images, fonts, sprite)
 );

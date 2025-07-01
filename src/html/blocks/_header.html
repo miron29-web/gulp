@@ -1,42 +1,115 @@
 <header class="header">
+  <div class="header__top">
     <div class="header__inner container">
-        <a href="/" class="header__logo logo">
-            <img
-                src="./img/logo-white.svg" 
-                alt="Fasttools logotype image" 
-                class="header__logo--image" 
-                width="200" 
-                height="70" 
-            >
+      <div class="header__contacts">
+        <a class="header__contacts-link" href="tel:+79181234567">
+          <svg class="header__contacts-icon" width="20" height="20">
+            <use xlink:href="./img/icons/sprites/sprite-mono.svg#phone"></use>
+          </svg>
+          +7 (918) 123-45-67
         </a>
-
-        <nav class="header__menu">
-            <ul class="header__menu--list">
-                <li class="header__menu--item">
-                    <a class="header__menu--link" href="#">Домой</a>
-                </li>
-                <li class="header__menu--item">
-                    <a class="header__menu--link" href="#">Товары</a>
-                </li>
-                <li class="header__menu--item">
-                    <a class="header__menu--link" href="#">О нас</a>
-                </li>
-                <li class="header__menu--item">
-                    <a class="header__menu--link" href="#">Контакты</a>
-                </li>
-                <li class="header__menu--item">
-                    <a class="header__menu--link" href="#">Блог</a>
-                </li>
-            </ul>
-        </nav>
-
-        <div class="header__actions">
-            <button class="header__basket" type="button">
-                <img src="./img/icons/basket-white.svg" alt="basket icon" sizes="50x50">
-            </button>
-            <button class="header__user" type="button">
-                <img src="./img/icons/user-white.svg" alt="accaunt icon" sizes="50x50">
-            </button>
-        </div>
+        <a class="header__contacts-link" href="mailto:fasttools@gmail.com">
+          <svg class="header__contacts-icon" width="20" height="20">
+            <use xlink:href="./img/icons/sprites/sprite-mono.svg#mail"></use>
+          </svg>
+          fasttools@gmail.com
+        </a>
+      </div>
+      <div class="header__socials socials">
+        <a class="header__socials-link" href="https://wa.me/79181234567" target="_blank" rel="noopener noreferrer">
+          <svg class="header__socials-icon" width="20" height="20">
+            <use xlink:href="./img/icons/sprites/sprite-mono.svg#whatsapp"></use>
+          </svg>
+        </a>
+        <a class="header__socials-link" href="https://t.me/your_username" target="_blank" rel="noopener noreferrer">
+          <svg class="header__socials-icon" width="20" height="20">
+            <use xlink:href="./img/icons/sprites/sprite-mono.svg#telegram"></use>
+          </svg>
+        </a>
+        <a class="header__socials-link" href="https://instagram.com/username" target="_blank" rel="noopener noreferrer">
+          <svg class="header__socials-icon" width="20" height="20">
+            <use xlink:href="./img/icons/sprites/sprite-mono.svg#instagram"></use>
+          </svg>
+        </a>
+      </div>
     </div>
+  </div>
+  <div class="header__bottom">
+    <div class="header__inner container">
+      <a href="/" class="header__logo logo">
+        <img src="./img/logo.svg" alt="Fasttools logo" class="header__logo-image" width="173" height="57">
+      </a>
+      <nav class="header__menu">
+        <ul class="header__menu-list">
+          <li class="header__menu-item">
+            <a href="#!" class="header__menu-link is-active">Домой</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="" class="header__menu-link">Каталог</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="" class="header__menu-link">Контакты</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="" class="header__menu-link">О нас</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="" class="header__menu-link">Блог</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <button class="header__actions-btn" type="button">
+          <svg class="header__actions-icon" width="26" height="26">
+            <use xlink:href="./img/icons/sprites/sprite-mono.svg#basket"></use>
+          </svg>
+        </button>
+        <button class="header__actions-btn" type="button">
+          <svg class="header__actions-icon" width="26" height="26">
+            <use xlink:href="./img/icons/sprites/sprite-mono.svg#account"></use>
+          </svg>
+        </button>
+        <button type="button" class="header__actions-burger">
+        </button>
+      </div>
+      <div class="header__inner-mobile">
+        <div class="header__top-mobile">
+          <div class="header__contacts header__contacts-mobile">
+            <a class="header__contacts-link" href="tel:+79181234567">
+              <svg class="header__contacts-icon" width="20" height="20">
+                <use xlink:href="./img/icons/sprites/sprite-mono.svg#phone"></use>
+              </svg>
+              +7 (918) 123-45-67
+            </a>
+            <a class="header__contacts-link" href="mailto:fasttools@gmail.com">
+              <svg class="header__contacts-icon" width="20" height="20">
+                <use xlink:href="./img/icons/sprites/sprite-mono.svg#mail"></use>
+              </svg>
+              fasttools@gmail.com
+            </a>          
+          </div>
+          <button class="header__close-mobile" type="button" aria-label="close menu button"></button>
+        </div>
+        <nav class="header__menu header__menu-mobile">
+          <ul class="header__menu-list ">
+            <li class="header__menu-item ">
+              <a href="#!" class="header__menu-link is-active ">Домой</a>
+            </li>
+            <li class="header__menu-item ">
+              <a href="#!" class="header__menu-link">Каталог</a>
+            </li>
+            <li class="header__menu-item">
+              <a href="#!" class="header__menu-link">Контакты</a>
+            </li>
+            <li class="header__menu-item">
+              <a href="#!" class="header__menu-link">О нас</a>
+            </li>
+            <li class="header__menu-item">
+              <a href="#!" class="header__menu-link">Блог</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
 </header>
